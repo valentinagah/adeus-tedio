@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E Agora? - Adeus Tédio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 85%;
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            font-size: 2.5rem;
+        }
+
+        p {
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: #fff;
+            color: #764ba2;
+            border: none;
+            padding: 15px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-surprise {
+            background-color: #ff7b00;
+            color: white;
+        }
+
+        #suggestion-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: none;
+            font-size: 1.2rem;
+            font-weight: 500;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>E Agora?</h1>
+        <p>Bateu o tédio? Escolha seu nível de energia:</p>
+        
+        <button class="btn" onclick="getIdea('preguica')">🛋️ Tô com preguiça</button>
+        <button class="btn" onclick="getIdea('fazerAlgo')">⚡ Quero fazer algo</button>
+        <button class="btn btn-surprise" onclick="getIdea('surpresa')">🎲 Me surpreenda!</button>
+
+        <div id="suggestion-box"></div>
+    </div>
+
+    <script>
+        const ideias = {
+            preguica: [
+                "Abra o Google Maps, jogue o bonequinho do Street View em um país aleatório e explore a rua.",
+                "Assista a um documentário curto no YouTube sobre algo que você nunca ouviu falar.",
+                "Faça 3 minutos de alongamento leve para esticar as costas.",
+                "Procure uma playlist de músicas de um ano específico (ex: 1985) e ouça as 3 primeiras.",
+                "Limpe a galeria do seu celular apagando prints velhos que você não precisa mais."
+            ],
+            fazerAlgo: [
+                "Vá até a cozinha e invente um lanche usando apenas o que já está aberto na geladeira.",
+                "Organize aquela gaveta bagunçada que você está fingindo que não vê faz meses.",
+                "Pegue papel e caneta e tente desenhar um objeto que está na sua frente sem tirar a caneta do papel.",
+                "Aprenda a dar um nó de gravata ou um nó marinheiro com algum tutorial rápido.",
+                "Mande mensagem para um amigo que você não fala há muito tempo dizendo apenas: 'Lembrei de você, tudo bem?'"
+            ],
+            surpresa: [
+                "Tente equilibrar uma colher ou um lápis no nariz pelo maior tempo que conseguir.",
+                "Aprenda a contar até 10 em um idioma completamente diferente (como Coreano ou Russo) agora.",
+                "Beba um copo de água cheio de uma vez só (hidratação contra o tédio!).",
+                "Faça a pose de super-herói (mãos na cintura) por 2 minutos seguidos. Cientistas dizem que aumenta a confiança!",
+                "Tente escrever seu nome completo usando a mão não dominante (a esquerda, se for destro)."
+            ]
+        };
+
+        function getIdea(category) {
+            const list = ideias[category];
+            const randomIndex = Math.floor(Math.random() * list.length);
+            const suggestionBox = document.getElementById('suggestion-box');
+            
+            suggestionBox.innerText = list[randomIndex];
+            suggestionBox.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
